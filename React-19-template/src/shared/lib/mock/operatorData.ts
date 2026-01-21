@@ -1,0 +1,190 @@
+import type { Operator, OperatorGroup } from 'shared/types';
+
+// Mock operator data with extended properties using all actual operator images
+const mockOperators: Operator[] = [
+  {
+    id: '1',
+    name: 'Rixsiyeva Shaxnoza Ravshan qizi',
+    avatar: '/operatorImg/Rixsiyeva Shaxnoza Ravshan qizi (248).jpg',
+    rank: 1,
+    points: 1204,
+    count: 104,
+    kpi: 89.5,
+    average: '01:45',
+    behavior: 9,
+    // More dynamic 23-day ranking history showing dramatic ups and downs
+    dailyRankings: [5, 1, 4, 6, 12, 11, 13, 5, 7, 4, 9, 4, 6, 7, 8, 5, 6, 4, 3, 2, 1, 2, 1],
+    monthlyRankings: [1, 5, 5, 4, 4, 5, 6, 4, 8, 4, 4, 2],
+    topMedalCount: 10,
+    rankChange: 2,
+    bonusScores: [
+      {
+        id: 'bonus-1-1',
+        type: 'organizational',
+        amount: 10,
+        description: 'Active participation in team meetings',
+        date: '2026-01-15'
+      },
+      {
+        id: 'bonus-1-2',
+        type: 'monitoring',
+        amount: 10,
+        description: 'Excellent monitoring results - 4 points',
+        date: '2026-01-10'
+      }
+    ]
+  },
+  {
+    id: '2',
+    name: 'Xusnora Ruziyeva Sodiqjon qizi',
+    avatar: '/operatorImg/Ruziyeva Xusnora Sodiqjon qizi (247.1).png',
+    rank: 2,
+    points: 1104,
+    count: 102,
+    kpi: 89.5,
+    average: '02:12',
+    behavior: 10,
+    dailyRankings: [2, 1, 3, 8, 1, 5, 1, 6, 2, 2, 2, 2, 2, 4, 11, 2, 1, 2, 3, 2, 1, 2, 2],
+    monthlyRankings: [1, 3, 5, 4, 2, 5, 6, 7, 8, 4, 4, 2],
+    topMedalCount: 12,
+    rankChange: 0,
+    bonusScores: [
+      {
+        id: 'bonus-2-1',
+        type: 'training',
+        amount: 15,
+        description: 'Mentoring new operators',
+        date: '2026-01-12'
+      }
+    ]
+  },
+  {
+    id: '3',
+    name: 'Muhammadxo`jayev Muhammadxo`ja Muhammadxo`ja Fikrat o\'g\'li',
+    avatar: '/operatorImg/Sattarov Izzatbek Fikrat o\'g\'li (312).jpg',
+    rank: 3,
+    points: 1004,
+    count: 103,
+    kpi: 88.5,
+    average: '02:34',
+    behavior: 8,
+    dailyRankings: [3, 2, 1, 3, 4, 3, 2, 3, 4, 3, 2, 1, 3, 4, 2, 3, 4, 3, 2, 3, 4, 3, 3],
+    monthlyRankings: [1, 5, 5, 4, 4, 5, 6, 7, 8, 4, 4, 9],
+    topMedalCount: 8,
+    rankChange: -2,
+  },
+  {
+    id: '4',
+    name: 'Farxod Shermatov Raxmatilla o\'g\'li',
+    avatar: '/operatorImg/Shermatov Farxod Raxmatilla o\'g\'li (0370).jpg',
+    rank: 4,
+    points: 703,
+    count: 105,
+    kpi: 88.5,
+    average: '03:15',
+    behavior: 7,
+    dailyRankings: [4, 3, 4, 5, 4, 5, 4, 3, 5, 4, 3, 5, 4, 5, 4, 3, 5, 4, 5, 4, 5, 4, 4],
+    monthlyRankings: [4, 4, 4, 5, 1, 4, 5, 4, 4, 4, 5, 4],
+    topMedalCount: 0,
+    rankChange: -1,
+  },
+  {
+    id: '5',
+    name: 'Dilshod Shoraximov Atxam o\'g\'li',
+    avatar: '/operatorImg/Shoraximov Dilshod Atxam o\'g\'li (322).png',
+    rank: 5,
+    points: 922,
+    count: 101,
+    kpi: 87.5,
+    average: '03:42',
+    behavior: 9,
+    dailyRankings: [5, 6, 5, 4, 5, 6, 5, 4, 6, 5, 4, 5, 6, 5, 4, 5, 6, 5, 4, 5, 6, 5, 5],
+    monthlyRankings: [5, 5, 5, 4, 5, 5, 4, 5, 5, 5, 4, 5],
+    topMedalCount: 0,
+    rankChange: 0
+  },
+  {
+    id: '6',
+    name: 'Abduxakim Sobirov Qobil o\'g\'li',
+    avatar: '/operatorImg/Sobirov Abduxakim Qobil o\'g\'li (0116).png',
+    rank: 6,
+    points: 540,
+    count: 106,
+    kpi: 87.5,
+    average: '04:18',
+    behavior: 6,
+    dailyRankings: [6, 7, 6, 7, 6, 7, 8, 7, 6, 7, 6, 7, 8, 7, 6, 7, 6, 7, 8, 7, 6, 7, 6],
+    monthlyRankings: [6, 6, 6, 6, 6, 6, 6, 2, 6, 6, 6, 6],
+    topMedalCount: 0,
+    rankChange: -1,
+  },
+  {
+    id: '7',
+    name: 'Fazliddin Sodiqov Ravshan o\'g\'li',
+    avatar: '/operatorImg/Sodiqov Fazliddin Ravshan o\'g\'li (0270).jpg',
+    rank: 7,
+    points: 154,
+    count: 104,
+    kpi: 87.5,
+    average: '04:56',
+    behavior: 8,
+    dailyRankings: [7, 8, 7, 8, 7, 8, 7, 9, 8, 7, 8, 7, 7, 8, 9, 8, 7, 8, 7, 8, 7, 8, 7],
+    monthlyRankings: [7, 7, 7, 7, 7, 7, 7, 3, 7, 7, 7, 7],
+    topMedalCount: 0,
+    rankChange: 1,
+  },
+  {
+    id: '8',
+    name: 'Tohirjon Sodiqov Ilxom o\'g\'li',
+    avatar: '/operatorImg/Sodiqov Tohirjon Ilxom o\'g\'li (0529).jpg',
+    rank: 8,
+    points: 647,
+    count: 106,
+    kpi: 87.5,
+    average: '05:23',
+    behavior: 7,
+    dailyRankings: [8, 9, 8, 9, 8, 9, 8, 7, 8, 9, 8, 9, 8, 7, 8, 9, 8, 9, 8, 7, 8, 9, 8],
+    monthlyRankings: [8, 8, 8, 8, 1, 8, 8, 2, 8, 8, 8, 8],
+    topMedalCount: 0,
+    rankChange: 1,
+  },
+  {
+    id: '9',
+    name: 'Gulnora Mirzayeva Ravshan qizi',
+    avatar: '/operatorImg/Rixsiyeva Shaxnoza Ravshan qizi (248).jpg', // Reusing image
+    rank: 9,
+    points: 325,
+    count: 98,
+    kpi: 86.0,
+    average: '06:12',
+    behavior: 5,
+    dailyRankings: [9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9],
+    monthlyRankings: [9, 9, 9, 9, 9, 8, 9, 9, 9, 9, 9, 9],
+    topMedalCount: 0,
+    rankChange: 0,
+  },
+  {
+    id: '10',
+    name: 'Jasurbek Karimov Fozil o\'g\'li',
+    avatar: '/operatorImg/Sattarov Izzatbek Fikrat o\'g\'li (312).jpg', // Reusing image
+    rank: 10,
+    points: 298,
+    count: 95,
+    kpi: 85.5,
+    average: '06:45',
+    behavior: 6,
+    dailyRankings: [6, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 4, 9, 8, 9, 12, 19, 11, 9, 10],
+    monthlyRankings: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+    topMedalCount: 0,
+    rankChange: -1,
+  },
+];
+
+// Generate mock groups - Back to 6 groups
+const groupTitles = ['1009', '1000', '1242', '1170', '1093', 'DOP'];
+
+export const mockOperatorGroups: OperatorGroup[] = Array.from({ length: 6 }, (_, index) => ({
+  id: `${groupTitles[index]}-${index}`,
+  title: groupTitles[index],
+  operators: mockOperators,
+}));
