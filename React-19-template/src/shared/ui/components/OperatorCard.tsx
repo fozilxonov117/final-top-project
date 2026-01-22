@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { Operator } from 'shared/types';
 import { RankBadge } from './RankBadge';
-import { PointsWithBadge } from './PointsWithBadge';
 import { cn } from 'shared/lib';
 
 interface OperatorCardProps {
@@ -136,10 +135,7 @@ export const OperatorCard = ({ operator, className, onClick }: OperatorCardProps
             'group-hover:shadow-lg',
             getPointColors(operator.rank)
           )}>
-            <PointsWithBadge 
-              operator={operator}
-              badgeClassName="text-[8px] min-w-[16px] h-4 -top-1.5 -right-1.5"
-            />
+            {operator.points}
           </div>
         </div>
       </div>

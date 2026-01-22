@@ -1,5 +1,4 @@
 import type { Operator } from 'shared/types';
-import { PointsWithBadge } from 'shared/ui';
 
 interface ProfileStatsProps {
   operator: Operator;
@@ -30,13 +29,7 @@ export const ProfileStats = ({ operator }: ProfileStatsProps) => {
         {/* Points */}
         <div className="text-center">
           <div className="text-white/70 text-sm font-medium mb-2">Points</div>
-          <div className="text-3xl font-bold text-white">
-            <PointsWithBadge 
-              operator={operator}
-              className="text-3xl font-bold"
-              badgeClassName="-top-3 -right-3"
-            />
-          </div>
+          <div className="text-3xl font-bold text-white">{operator.points}</div>
         </div>
       </div>
     </div>

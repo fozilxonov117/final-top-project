@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { OperatorTable } from 'widgets/OperatorTable';
 import { mockOperatorGroups } from 'shared/lib/mock/operatorData';
-import { StockChart, GoldMedal, SilverMedal, BronzeMedal, PointsWithBadge } from 'shared/ui';
+import { StockChart, GoldMedal, SilverMedal, BronzeMedal } from 'shared/ui';
 import type { Operator } from 'shared/types';
 import { BonusScoreDetails } from 'features/operator-ranking';
 
@@ -91,13 +91,7 @@ const ProfileStats = ({ operator }: { operator: Operator }) => {
         </div>
         <div className="text-center group">
           <div className="text-white/70 text-sm font-medium mb-2 group-hover:text-white transition-colors duration-150">{t('points')}</div>
-          <div className="text-3xl font-bold text-white transition-colors duration-150 group-hover:text-yellow-400">
-            <PointsWithBadge 
-              operator={operator}
-              className="text-3xl font-bold"
-              badgeClassName="-top-3 -right-3"
-            />
-          </div>
+          <div className="text-3xl font-bold text-white transition-colors duration-150 group-hover:text-yellow-400">{operator.points}</div>
 
         </div>
       </div>
