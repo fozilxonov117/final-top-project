@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit/query/react';
 import { getLocalStorage } from 'shared/lib';
 
-const baseUrl = import.meta.env.VITE_APP_URL_DEV;
+const baseUrl = import.meta.env.VITE_APP_URL_DEV ?? 'https://api.top.kontaktmarkazi.uz/';
 
 const baseQuery = async (
   args: string | FetchArgs,
